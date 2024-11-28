@@ -135,7 +135,7 @@ class Browser(object):
         if not status:
             await context.close() if self.user_data_dir else await browser.close()
             return
-        settings = script[1].get_text().strip().replace(";", "")
+        settings = script[0].get_text().strip().replace(";", "")
         match = re.sub("window.settings = ", "", settings)
         if match:
             token = json.loads(match).get("token")
